@@ -1,8 +1,16 @@
 from fpdf import FPDF
+import os
 
 def generar_pdf(nombre_negocio, rubro, cliente, fecha, nombres, cantidades, precios, subtotal, descuento, iva, total, forma_pago):
     pdf = FPDF()
     pdf.add_page()
+    
+    ruta_logo = os.path.join(os.path.dirname(__file__), "loguito.png")
+    pdf.image(ruta_logo, 10, 10, 30)
+    
+    
+    pdf.set_y(45)
+    
     pdf.set_font("helvetica", "", 12)
     
     pdf.cell(0, 8, f"Negocio: {nombre_negocio} ({rubro})", 0, 1)
